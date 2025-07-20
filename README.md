@@ -14,7 +14,6 @@ code .
 conda create -p <env_name> python=3.10 -y
 
 #### To install the Requirements 
-```
 pip install -r requirements.txt
 ```
 
