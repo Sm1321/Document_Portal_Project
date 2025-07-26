@@ -8,9 +8,9 @@ pypdf
 faiss-cpu
 langchain_openai
 PyMuPDF
+structlog  #TO create a Custom Log
 
 
-strcutlog # TO create a Custom Log
 
 -e .
 

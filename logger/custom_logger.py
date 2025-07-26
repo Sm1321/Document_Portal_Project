@@ -34,3 +34,4 @@ if __name__ == "__main__":
     logger = logger.get_logger(__file__)
     logger.info("Custom Logger Initialized.")
 
+

@@ -2,15 +2,7 @@ import sys
 import traceback
 from logger.custom_logger import CustomLogger
 
-
-
-
-
-
 logger = CustomLogger().get_logger("Exception_experiment")
-
-
-
 
 class DocumnetPortalException(Exception):
     """ 
@@ -39,7 +31,7 @@ if __name__=="__main__":
         print(a)
     except Exception as e:
         app_exc = DocumnetPortalException(e,sys)
-        logger.error(app_exc)
+        logger.error(app_exc) #log the Exeption
         raise app_exc    
     
 
