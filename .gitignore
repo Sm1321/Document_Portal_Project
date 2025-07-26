@@ -4,3 +4,4 @@ document_portal.egg-info
 *.pyc
 logs/
 __pycache__
+__pycache__/
