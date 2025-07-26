@@ -3,9 +3,9 @@
 
 ## Create Project Folder and Environment Setup
 ```
-mkdir <Poeject_Folder_Name>
+mkdir <Project_Folder_Name>
 ```
-=======
+
 
 ## Create Project Folder and Environment Setup
 
