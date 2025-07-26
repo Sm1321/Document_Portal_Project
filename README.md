@@ -1,12 +1,6 @@
 # Document Portal Project
 
 
-
-
-
-
-
-<<<<<<< HEAD
 ## Create Project Folder and Environment Setup
 ```
 mkdir <Poeject_Folder_Name>
@@ -14,7 +8,6 @@ mkdir <Poeject_Folder_Name>
 =======
 
 ## Create Project Folder and Environment Setup
->>>>>>> b038f6fdf9f7cfaa9ad706042ff8a46e0aeedbf9
 
 ```bash
 # Create a new project folder
