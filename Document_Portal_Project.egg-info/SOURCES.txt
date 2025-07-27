@@ -4,7 +4,6 @@ Document_Portal_Project.egg-info/PKG-INFO
 Document_Portal_Project.egg-info/SOURCES.txt
 Document_Portal_Project.egg-info/dependency_links.txt
 Document_Portal_Project.egg-info/top_level.txt
-config/__init__.py
 exception/__init__.py
 exception/custom_exception.py
 logger/__init__.py

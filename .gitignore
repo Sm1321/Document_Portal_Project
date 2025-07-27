@@ -1,7 +1,7 @@
 dp_p
 .env
-document_portal.egg-info
 *.pyc
 logs/
 __pycache__
+Document_Portal_Project.egg-info
 __pycache__/
