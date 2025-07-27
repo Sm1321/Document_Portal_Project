@@ -53,10 +53,6 @@ if __name__ == "__main__":
     logger.error("Failed to process PDF", error="File not found", user_id=123)
 
 
-
-
-
-
 # class CustomLogger:
 #     def __init__(self,log_dir = "logs"):
 #         ##Ensure Directory Exists
