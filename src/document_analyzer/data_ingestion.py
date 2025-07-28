@@ -12,7 +12,7 @@ class DocumentHandler:
     """
     def __init__(self,data_dir=None,session_id=None):
         try:
-            self.log=CustomLogger().get_logger(__name__)
+            self.log = CustomLogger().get_logger(__name__)
             self.data_dir = data_dir or os.getenv(
                 "DATA_STORAGE_PATH",
                 os.path.join(os.getcwd(), "data", "document_analysis")
@@ -69,7 +69,7 @@ if __name__ == "__main__":
     from pathlib import Path
     from io import BytesIO
     
-    pdf_path=r"C:\MY_Folder\Git_Projects_\Document_Portal_Project\data\document_analysis\NIPS-2017-attention-is-all-you-need-Paper.pdf"
+    pdf_path=r"C:\MY_Folder\Git_Projects_\Document_Portal_Project\notebook\data\sample.pdf"
     class DummnyFile:
         def __init__(self,file_path):
             self.name = Path(file_path).name

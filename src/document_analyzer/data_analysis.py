@@ -16,8 +16,8 @@ class DocumentAnalyzer:
     def __init__(self):
         self.log = CustomLogger().get_logger(__name__)
         try:
-            self.loader=ModelLoader()
-            self.llm=self.loader.load_llm()
+            self.loader = ModelLoader()
+            self.llm =  self.loader.load_llm()
             
             # Prepare parsers
             self.parser = JsonOutputParser(pydantic_object=Metadata)

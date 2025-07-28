@@ -59,7 +59,7 @@ class ModelLoader:
 
         log.info("Loading LLM...")
         
-        provider_key = os.getenv("LLM_PROVIDER", "groq")  # Default groq
+        provider_key = os.getenv("LLM_PROVIDER", "groq")  # Default groq,but now we changed to Google LLM
         if provider_key not in llm_block:
             log.error("LLM provider not found in config", provider_key=provider_key)
             raise ValueError(f"Provider '{provider_key}' not found in config")
@@ -73,30 +73,30 @@ class ModelLoader:
         log.info("Loading LLM", provider=provider, model=model_name, temperature=temperature, max_tokens=max_tokens)
 
         if provider == "google":
-            llm=ChatGoogleGenerativeAI(
-                model=model_name,
-                temperature=temperature,
-                max_output_tokens=max_tokens
+            llm = ChatGoogleGenerativeAI(
+                model = model_name,
+                temperature = temperature,
+                max_output_tokens = max_tokens
             )
             return llm
 
         elif provider == "groq":
             llm=ChatGroq(
-                model=model_name,
-                api_key=self.api_keys["GROQ_API_KEY"],
-                temperature=temperature,
+                model = model_name,
+                api_key = self.api_keys["GROQ_API_KEY"],
+                temperature = temperature,
             )
             return llm
             
         elif provider == "openai":
             return ChatOpenAI(
-                model=model_name,
-                api_key=self.api_keys["OPENAI_API_KEY"],
-                temperature=temperature,
-                max_tokens=max_tokens
+                model = model_name,
+                api_key = self.api_keys["OPENAI_API_KEY"],
+                temperature = temperature,
+                max_tokens = max_tokens
             )
         else:
-            log.error("Unsupported LLM provider", provider=provider)
+            log.error("Unsupported LLM provider", provider = provider)
             raise ValueError(f"Unsupported LLM provider: {provider}")
         
     
