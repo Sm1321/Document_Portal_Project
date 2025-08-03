@@ -6,7 +6,7 @@ from exception.custom_exception import DocumentPortalException
 from model.models import *
 from langchain_core.output_parsers import JsonOutputParser
 from langchain.output_parsers import OutputFixingParser
-from prompt.prompt_library import *
+from prompt.prompt_library import PROPMT_REGISTRY
 
 class DocumentAnalyzer:
     """
