@@ -1,6 +1,5 @@
 # Document Portal Project
 
-
 ## Create Project Folder and Environment Setup
 ```
 mkdir <Project_Folder_Name>
