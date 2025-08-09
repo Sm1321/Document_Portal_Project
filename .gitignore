@@ -5,3 +5,4 @@ logs/
 __pycache__
 Document_Portal_Project.egg-info
 __pycache__/
+faiss_index/

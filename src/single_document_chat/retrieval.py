@@ -7,7 +7,7 @@ from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_community.vectorstores import FAISS
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
-from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain.chains.combine_documents import create_stuff_documents_chain #inbuilt chain
 from utils.model_loader import ModelLoader
 from exception.custom_exception import DocumentPortalException
 from logger.custom_logger import CustomLogger
@@ -30,23 +30,23 @@ class ConversationalRAG:
             self.history_aware_retriever = create_history_aware_retriever(
                 self.llm, self.retriever, self.contextualize_prompt
             )
-            self.log.info("Created history-aware retriever", session_id=session_id)
+            self.log.info("Created history-aware retriever", session_id = session_id)
 
             self.qa_chain = create_stuff_documents_chain(self.llm, self.qa_prompt)
             self.rag_chain = create_retrieval_chain(self.history_aware_retriever, self.qa_chain)
-            self.log.info("Created RAG chain", session_id=session_id)
+            self.log.info("Created RAG chain", session_id = session_id)
 
             self.chain = RunnableWithMessageHistory(
                 self.rag_chain,
                 self._get_session_history,
-                input_messages_key="input",
-                history_messages_key="chat_history",
-                output_messages_key="answer"
+                input_messages_key = "input",
+                history_messages_key = "chat_history",
+                output_messages_key = "answer"
             )
-            self.log.info("Wrapped chain with message history", session_id=session_id)
+            self.log.info("Wrapped chain with message history", session_id = session_id)
 
         except Exception as e:
-            self.log.error("Error initializing ConversationalRAG", error=str(e), session_id=session_id)
+            self.log.error("Error initializing ConversationalRAG", error = str(e), session_id  = session_id)
             raise DocumentPortalException("Failed to initialize ConversationalRAG", sys)
 
     def _load_llm(self):
@@ -55,7 +55,7 @@ class ConversationalRAG:
             self.log.info("LLM loaded successfully", class_name=llm.__class__.__name__)
             return llm
         except Exception as e:
-            self.log.error("Error loading LLM via ModelLoader", error=str(e))
+            self.log.error("Error loading LLM via ModelLoader", error = str(e))
             raise DocumentPortalException("Failed to load LLM", sys)
 
     def _get_session_history(self, session_id: str) -> BaseChatMessageHistory:

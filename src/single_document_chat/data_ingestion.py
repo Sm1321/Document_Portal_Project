@@ -15,11 +15,11 @@ class SingleDocIngestor:
         try:
             self.log = CustomLogger().get_logger(__name__)
             self.data_dir = Path(data_dir)
-            self.data_dir.mkdir(parents=True, exist_ok=True)
+            self.data_dir.mkdir(parents = True, exist_ok = True)
             self.faiss_dir = Path(faiss_dir)
             self.faiss_dir.mkdir(parents=True, exist_ok=True)
             self.model_loader = ModelLoader()
-            self.log.info("SingleDocIngestor initialized", temp_path=str(self.data_dir), faiss_path=str(self.faiss_dir))
+            self.log.info("SingleDocIngestor initialized", temp_path = str(self.data_dir), faiss_path = str(self.faiss_dir))
         except Exception as e:
             self.log.error("Failed to initialize SingleDocIngestor", error=str(e))
             raise DocumentPortalException("Initialization error in SingleDocIngestor", sys)
@@ -33,16 +33,16 @@ class SingleDocIngestor:
                 
                 with open(temp_path, "wb") as f_out:
                     f_out.write(uploaded_file.read()) 
-                self.log.info("PDF saved for ingestion", filename=uploaded_file.name)
+                self.log.info("PDF saved for ingestion", filename = uploaded_file.name)
                 
                 loader = PyPDFLoader(str(temp_path))
                 docs = loader.load()
                 documents.extend(docs)
-            self.log.info("PDF files loaded", count=len(documents))
+            self.log.info("PDF files loaded", count = len(documents))
             return self._create_retriever(documents)
                 
         except Exception as e:
-            self.log.error("Document ingestion failed", error=str(e))
+            self.log.error("Document ingestion failed", error = str(e))
             raise DocumentPortalException("Error during file ingestion", sys)
         
     def _create_retriever(self,documents):
@@ -56,11 +56,11 @@ class SingleDocIngestor:
             
             # save FAISS index
             vectorstore.save_local(str(self.faiss_dir))
-            self.log.info("FAISS index created and saved", faiss_path=str(self.faiss_dir))
+            self.log.info("FAISS index created and saved", faiss_path = str(self.faiss_dir))
             
             retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 5})
-            self.log.info("Retriever created successfully", retriever_type=str(type(retriever)))
+            self.log.info("Retriever created successfully", retriever_type = str(type(retriever)))
             return retriever  
         except Exception as e:
-            self.log.error("Retriever creation failed", error=str(e))
+            self.log.error("Retriever creation failed", error = str(e))
             raise DocumentPortalException("Error creating FAISS retriever", sys)
