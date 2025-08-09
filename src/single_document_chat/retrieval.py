@@ -31,7 +31,7 @@ class ConversationalRAG:
                 self.llm, self.retriever, self.contextualize_prompt
             )
             self.log.info("Created history-aware retriever", session_id = session_id)
-
+            #Chaining with the RAW and Langgchain Modules
             self.qa_chain = create_stuff_documents_chain(self.llm, self.qa_prompt)
             self.rag_chain = create_retrieval_chain(self.history_aware_retriever, self.qa_chain)
             self.log.info("Created RAG chain", session_id = session_id)
@@ -95,11 +95,11 @@ class ConversationalRAG:
             answer = response.get("answer", "No answer.")
 
             if not answer:
-                self.log.warning("Empty answer received", session_id=self.session_id)
+                self.log.warning("Empty answer received", session_id = self.session_id)
 
-            self.log.info("Chain invoked successfully", session_id=self.session_id, user_input=user_input, answer_preview=answer[:150])
+            self.log.info("Chain invoked successfully", session_id = self.session_id, user_input = user_input, answer_preview = answer[:150])
             return answer
 
         except Exception as e:
-            self.log.error("Failed to invoke conversational RAG", error=str(e), session_id=self.session_id)
+            self.log.error("Failed to invoke conversational RAG", error = str(e), session_id=self.session_id)
             raise DocumentPortalException("Failed to invoke RAG chain", sys)
