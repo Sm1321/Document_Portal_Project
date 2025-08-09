@@ -12,7 +12,7 @@ class DocumentIngestion:
     Handles saving, reading, and combining of PDFs for comparison with session-based versioning.
     """
 
-    def __init__(self, base_dir: str = "data/document_compare", session_id=None):
+    def __init__(self, base_dir: str = "data/document_compare", session_id = None):
         self.log = CustomLogger().get_logger(__name__)
         self.base_dir = Path(base_dir)
         self.session_id = session_id or f"session_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:8]}"
@@ -61,11 +61,11 @@ class DocumentIngestion:
                     if text.strip():
                         all_text.append(f"\n --- Page {page_num + 1} --- \n{text}")
 
-            self.log.info("PDF read successfully", file = str(pdf_path), pages=len(all_text))
+            self.log.info("PDF read successfully", file=str(pdf_path), pages=len(all_text))
             return "\n".join(all_text)
 
         except Exception as e:
-            self.log.error("Error reading PDF", file = str(pdf_path), error=str(e))
+            self.log.error("Error reading PDF", file=str(pdf_path), error=str(e))
             raise DocumentPortalException("Error reading PDF", sys)
 
     def combine_documents(self) -> str:
@@ -80,11 +80,11 @@ class DocumentIngestion:
                     doc_parts.append(f"Document: {file.name}\n{content}")
 
             combined_text = "\n\n".join(doc_parts)
-            self.log.info("Documents combined", count = len(doc_parts), session=self.session_id)
+            self.log.info("Documents combined", count=len(doc_parts), session=self.session_id)
             return combined_text
 
         except Exception as e:
-            self.log.error("Error combining documents", error = str(e), session=self.session_id)
+            self.log.error("Error combining documents", error=str(e), session=self.session_id)
             raise DocumentPortalException("Error combining documents", sys)
 
     def clean_old_sessions(self, keep_latest: int = 3):
@@ -100,8 +100,8 @@ class DocumentIngestion:
                 for file in folder.iterdir():
                     file.unlink()
                 folder.rmdir()
-                self.log.info("Old session folder deleted", path = str(folder))
+                self.log.info("Old session folder deleted", path=str(folder))
 
         except Exception as e:
-            self.log.error("Error cleaning old sessions", error = str(e))
+            self.log.error("Error cleaning old sessions", error=str(e))
             raise DocumentPortalException("Error cleaning old sessions", sys)

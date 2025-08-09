@@ -6,12 +6,14 @@ langchain_google_genai
 langchain_community
 pypdf
 faiss-cpu
-langchain_openai
+structlog
 PyMuPDF
-structlog  #TO create a Custom Log
 pandas
-
-
+streamlit
+langchain-core[tracing]
+pytest
+streamlit
 -e .
+
 
 

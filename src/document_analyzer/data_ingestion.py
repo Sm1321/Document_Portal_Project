@@ -1,5 +1,6 @@
 import os
 import fitz
+import sys
 import uuid
 from datetime import datetime
 from logger.custom_logger import CustomLogger
@@ -12,7 +13,7 @@ class DocumentHandler:
     """
     def __init__(self,data_dir=None,session_id=None):
         try:
-            self.log = CustomLogger().get_logger(__name__)
+            self.log=CustomLogger().get_logger(__name__)
             self.data_dir = data_dir or os.getenv(
                 "DATA_STORAGE_PATH",
                 os.path.join(os.getcwd(), "data", "document_analysis")
@@ -28,7 +29,7 @@ class DocumentHandler:
 
         except Exception as e:
             self.log.error(f"Error initializing DocumentHandler: {e}")
-            raise DocumentPortalException("Error initializing DocumentHandler", e) from e
+            raise DocumentPortalException("Error initializing DocumentHandler", sys)
         
 
     def save_pdf(self,uploaded_file):
@@ -36,7 +37,7 @@ class DocumentHandler:
             filename = os.path.basename(uploaded_file.name)
             
             if not filename.lower().endswith(".pdf"):
-                raise DocumentPortalException("Invalid file type. Only PDFs are allowed.")
+                raise DocumentPortalException("Invalid file type. Only PDFs are allowed.",sys)
 
             save_path = os.path.join(self.session_path, filename)
             
@@ -55,7 +56,7 @@ class DocumentHandler:
         try:
             text_chunks = []
             with fitz.open(pdf_path) as doc:
-                for page_num, page in enumerate(doc, start=1):
+                for page_num, page in enumerate(doc, start=1): # type: ignore
                     text_chunks.append(f"\n--- Page {page_num} ---\n{page.get_text()}")
             text = "\n".join(text_chunks)
 
@@ -69,7 +70,7 @@ if __name__ == "__main__":
     from pathlib import Path
     from io import BytesIO
     
-    pdf_path=r"C:\MY_Folder\Git_Projects_\Document_Portal_Project\notebook\data\sample.pdf"
+    pdf_path=r"C:\\Users\\sunny\\document_portal\\data\\document_analysis\\sample.pdf"
     class DummnyFile:
         def __init__(self,file_path):
             self.name = Path(file_path).name
