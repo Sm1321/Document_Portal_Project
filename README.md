@@ -57,3 +57,7 @@ pip install -r requirements.txt
 ### Gemini API Key
 - [Get your API Key](https://aistudio.google.com/apikey)  
 - [Gemini Documentati
+
+
+
+- Archive Folder has the `src` , Where it has all the Previous .py files
