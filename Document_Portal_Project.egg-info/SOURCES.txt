@@ -18,7 +18,7 @@ src/__init__.py
 src/document_analyzer/__init__.py
 src/document_analyzer/data_analysis.py
 src/document_chat/__init__.py
-src/document_chat/retriever.py
+src/document_chat/retrieval.py
 src/document_compare/__init__.py
 src/document_compare/document_comparator.py
 src/document_ingestion/__init__.py

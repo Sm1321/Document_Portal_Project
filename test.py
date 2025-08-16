@@ -1,10 +1,12 @@
+# Test code for document ingestion and analysis using a PDFHandler and DocumentAnalyzer
+
 # import os
 # from pathlib import Path
 # from src.document_analyzer.data_ingestion import DocumentHandler       # Your PDFHandler class
 # from src.document_analyzer.data_analysis import DocumentAnalyzer  # Your DocumentAnalyzer class
 
 # # Path to the PDF you want to test
-# PDF_PATH = r"C:\MY_Folder\Git_Projects_\Document_Portal_Project\data\document_analysis\session_20250728_082633_bf5d9876\sample.pdf"
+# PDF_PATH = r"C:\\Users\\sunny\\document_portal\\data\\document_analysis\\sample.pdf"
 
 # # Dummy file wrapper to simulate uploaded file (Streamlit style)
 # class DummyFile:
@@ -46,7 +48,6 @@
 # if __name__ == "__main__":
 #     main()
 
-
 ## Testing code for document comparison using LLMs
 
 # import io
@@ -60,8 +61,8 @@
 
 # # ---- Step 1: Save and combine PDFs ---- #
 # def test_compare_documents():
-#     ref_path = Path(r"C:\MY_Folder\Git_Projects_\Document_Portal_Project\data\document_compare\Long_Report_V1.pdf")
-#     act_path = Path(r"C:\MY_Folder\Git_Projects_\Document_Portal_Project\data\document_compare\Long_Report_V2.pdf")
+#     ref_path = Path("C:\\Complete_Content2\\llmops_batch\\document_portal\\data\\document_compare\\Long_Report_V1.pdf")
+#     act_path = Path("C:\\Complete_Content2\\llmops_batch\\document_portal\\data\\document_compare\\Long_Report_V2.pdf")
 
 #     # Wrap them like Streamlit UploadedFile-style
 #     class FakeUpload:
@@ -80,7 +81,7 @@
 #     # Save files and combine
 #     ref_file, act_file = comparator.save_uploaded_files(ref_upload, act_upload)
 #     combined_text = comparator.combine_documents()
-#     comparator.clean_old_sessions(keep_latest = 3)
+#     comparator.clean_old_sessions(keep_latest=3)
 
 #     print("\n Combined Text Preview (First 1000 chars):\n")
 #     print(combined_text[:1000])
@@ -94,9 +95,10 @@
 
 # if __name__ == "__main__":
 #     test_compare_documents()
+    
+    
 
-
-# # Testing code for document chat functionality
+# Testing code for document chat functionality
 
 # import sys
 # from pathlib import Path
@@ -114,8 +116,8 @@
 #         if FAISS_INDEX_PATH.exists():
 #             print("Loading existing FAISS index...")
 #             embeddings = model_loader.load_embeddings()
-#             vectorstore = FAISS.load_local(folder_path = str(FAISS_INDEX_PATH), embeddings = embeddings,allow_dangerous_deserialization=True)
-#             retriever = vectorstore.as_retriever(search_type = "similarity", search_kwargs={"k": 5})
+#             vectorstore = FAISS.load_local(folder_path=str(FAISS_INDEX_PATH), embeddings=embeddings,allow_dangerous_deserialization=True)
+#             retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 5})
 #         else:
 #             # Step 2: Ingest document and create retriever
 #             print("FAISS index not found. Ingesting PDF and creating index...")
@@ -145,10 +147,8 @@
     
 #     # Run the test
 #     test_conversational_rag_on_pdf(pdf_path, question)
-
-
-
-
+    
+    
 ## testing for multidoc chat
 import sys
 from pathlib import Path
@@ -163,7 +163,9 @@ def test_document_ingestion_and_rag():
             "data\\multi_doc_chat\\sample.pdf",
             "data\\multi_doc_chat\\state_of_the_union.txt"
         ]
+        
         uploaded_files = []
+        
         for file_path in test_files:
             if Path(file_path).exists():
                 uploaded_files.append(open(file_path, "rb"))
@@ -175,6 +177,7 @@ def test_document_ingestion_and_rag():
             sys.exit(1)
             
         ingestor = DocumentIngestor()
+        
         retriever = ingestor.ingest_files(uploaded_files)
         
         for f in uploaded_files:
@@ -183,13 +186,19 @@ def test_document_ingestion_and_rag():
         session_id = "test_multi_doc_chat"
         
         rag = ConversationalRAG(session_id=session_id, retriever=retriever)
+        
         question = "what is President Zelenskyy said in their speech in parliament?"
+        
         answer=rag.invoke(question)
+        
         print("\n Question:", question)
+        
         print("Answer:", answer)
+        
         if not uploaded_files:
             print("No valid files to upload.")
             sys.exit(1)
+            
     except Exception as e:
         print(f"Test failed: {str(e)}")
         sys.exit(1)

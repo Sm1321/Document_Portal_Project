@@ -1,8 +1,12 @@
-dp_p
+env
 .env
-*.pyc
-logs/
-__pycache__
-Document_Portal_Project.egg-info
+document_portal.egg-info
+dp_p/
 __pycache__/
+logs/
+*.pyc
 faiss_index/
+main_archive/
+*.txt
+*.pdf
+*.docx
