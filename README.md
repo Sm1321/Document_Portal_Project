@@ -61,3 +61,6 @@ pip install -r requirements.txt
 
 ### Changes in the Folders
 - Archive Folder has the `src` , Where it has all the Previous .py files
+- These UI Can't handle the large Files or pdf, use less and simple files/pdf
+- In the Chat with Document page , you should include add the these pdf's` Chat with your Documents
+- Use the `Compare Two Documents`  Long_Report_V1.pdf and Long_Report_V2.pdf, to work for checking
