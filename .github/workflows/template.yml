@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://d33vqc0rt9ld30.cloudfront.net/latest/schema/cfn.template.schema.json
+
 AWSTemplateFormatVersion: '2010-09-09'
 Description: CloudFormation template to create ECR + ECS infra for Document Portal
 
