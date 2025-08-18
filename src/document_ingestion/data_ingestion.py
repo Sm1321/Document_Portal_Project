@@ -282,3 +282,4 @@ class DocumentComparator:
         except Exception as e:
             log.error("Error cleaning old sessions", error=str(e))
             raise DocumentPortalException("Error cleaning old sessions", e) from e
+

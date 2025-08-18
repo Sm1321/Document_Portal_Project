@@ -12,7 +12,7 @@ class DocumentIngestion:
     Handles saving, reading, and combining of PDFs for comparison with session-based versioning.
     """
 
-    def __init__(self, base_dir: str = "data/document_compare", session_id = None):
+    def __init__(self, base_dir: str = "data/document_compare", session_id=None):
         self.log = CustomLogger().get_logger(__name__)
         self.base_dir = Path(base_dir)
         self.session_id = session_id or f"session_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:8]}"

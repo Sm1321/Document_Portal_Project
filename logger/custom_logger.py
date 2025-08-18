@@ -2,10 +2,6 @@ import os
 import logging
 from datetime import datetime
 import structlog
-# from logger import GLOBAL_LOGGER as log
-
-
-
 
 class CustomLogger:
     def __init__(self, log_dir="logs"):

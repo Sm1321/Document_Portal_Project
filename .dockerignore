@@ -4,7 +4,7 @@ __pycache__/
 *.pyd
 .Python
 env/
-dp_p/
+venv/
 .git
 .gitignore
 *.log
