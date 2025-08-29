@@ -61,7 +61,7 @@ jobs:
           echo "image=$IMAGE_URI" >> $GITHUB_OUTPUT
 
   # -------------------------------
-  # 2. Deploy to ECS 
+  # 2. Deploy to ECS
   # -------------------------------
   deploy:
     name: Deploy to ECS Fargate
