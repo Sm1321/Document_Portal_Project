@@ -5,6 +5,7 @@ __pycache__/
 .Python
 env/
 dp_p/
+dp_env/
 .git
 .gitignore
 *.log

@@ -26,6 +26,9 @@ conda activate <path_of_the_env>
 
 # Install dependencies from requirements.txt
 pip install -r requirements.txt
+
+##Execute the FastAPI Code, in app/main.py:- 
+uvicorn api.main:app --port 8080 --reload   
 ```
 
 ## Minimum Requirements for the Project
@@ -56,8 +59,7 @@ pip install -r requirements.txt
 
 ### Gemini API Key
 - [Get your API Key](https://aistudio.google.com/apikey)  
-- [Gemini Documentati
-
+- [Gemini Documentation]
 
 ### Changes in the Folders
 - Archive Folder has the `src` , Where it has all the Previous .py files

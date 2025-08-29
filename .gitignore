@@ -1,4 +1,5 @@
 dp_p/
+dp_env/
 .env
 document_portal.egg-info
 venv/
