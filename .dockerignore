@@ -4,6 +4,7 @@ __pycache__/
 *.pyd
 .Python
 env/
+dp_env/
 dp_p/
 dp_env/
 .git
